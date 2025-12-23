@@ -24,9 +24,12 @@ namespace DiaryApp.Controllers
             return View();
         }
 
-        public IActionResult Post()
+        [HttpPost]
+        public IActionResult Create(DiaryEntry obj)
         {
-            return View();
+            _db.DiaryEntries.Add(obj);
+            _db.SaveChanges();
+            return RedirectToAction("Index");
         }
     }
 }
